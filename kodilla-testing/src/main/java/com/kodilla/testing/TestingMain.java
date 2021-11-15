@@ -1,39 +1,25 @@
 package com.kodilla.testing;
 
-import calculator.Calculator;
+import com.kodilla.testing.collection.OddNumbersExterminator;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.Random;
 
 public class TestingMain
 {
     public static void main(String[] args)
     {
-        System.out.println("Moduł 6. Wprowadzenie to testowania oprogramowania");
+        Random random = new Random();
 
-        Calculator calculator = new Calculator();
+        List<Integer> numbers = new ArrayList<Integer>();
 
-        double a = 100;
-        double b = 50;
+        for (int i = 0; i< random.nextInt(50) + 10; i++)
+            numbers.add(random.nextInt(200) + 20);
 
-        double additionResult = calculator.add(a, b);
+        System.out.println(OddNumbersExterminator.exterminate(numbers));
 
-        if (additionResult == a + b)
-        {
-            System.out.println("Addition Works!");
-        }
-        else
-        {
-            System.out.println("Addition Error!");
-        }
-
-        double subtractionResult = calculator.subtract(a, b);
-
-        if (subtractionResult == a - b)
-        {
-            System.out.println("Subtraction Works!");
-        }
-        else
-        {
-            System.out.println("Subtraction Error");
-        }
 
     }
 }
