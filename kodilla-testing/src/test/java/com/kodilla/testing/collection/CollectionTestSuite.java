@@ -1,46 +1,70 @@
 package com.kodilla.testing.collection;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import java.util.ArrayList;
-import java.util.List;
 
+@DisplayName("TDD: Collection Tests: ")
 public class CollectionTestSuite
 {
-    @DisplayName("testOddNumbersExterminatorEmptyList")
+    @BeforeAll
+    public static void beforeAllTests()
+    {
+        System.out.println("This is the beginning of tests.");
+    }
+
+    @AfterAll
+    public static void afterAllTests()
+    {
+        System.out.println("All tests are finished.");
+    }
+
     @BeforeEach
-    public void before()
+    public void beforeEveryTest()
     {
-        System.out.println("Testing Empty List Case");
-    }
-    @Test
-    public void testOddNumbersExterminatorEmptyList()
-    {
-        List<Integer> emptyList = new ArrayList<>();
-        System.out.println(OddNumbersExterminator.exterminate(emptyList));
+
+        System.out.println("Preparing to execute test #");
     }
 
-    @DisplayName("testOddNumbersExterminatorNormalList")
     @AfterEach
-    public void after()
+    public void afterEveryTest()
     {
-        System.out.println("Testing Normal List Case");
+        System.out.println("Test Finished");
     }
+
+    @DisplayName("If Empty List?")
     @Test
-    public void testOddNumbersExterminatorNormalList()
+    void testOddNumbersExterminatorEmptyList()
     {
-        List<Integer> evenAndOddNumbers = new ArrayList<>();
-        evenAndOddNumbers.add(1);
-        evenAndOddNumbers.add(2);
-        evenAndOddNumbers.add(3);
-        evenAndOddNumbers.add(4);
-        evenAndOddNumbers.add(5);
-        evenAndOddNumbers.add(6);
+        //Given
+        ListBuilder listBuilder = new ListBuilder(0);
+        ArrayList emptyList = listBuilder.buildList();
+        ArrayList<Integer> emptyList1 = new ArrayList<>();
+        //When
+        OddNumbersExterminator oddNumbersExterminator = new OddNumbersExterminator(emptyList);
 
-        System.out.println(OddNumbersExterminator.exterminate(evenAndOddNumbers));
+        //Then
+        Assertions.assertEquals(emptyList1, oddNumbersExterminator.exterminator(emptyList));
     }
 
+    @DisplayName("If Normal List?")
+    @Test
+    void testOddNumbersExterminatorNormalList()
+    {
+        //Given
+        ListBuilder listBuilder = new ListBuilder(10);
+        ArrayList<Integer> normalList = listBuilder.buildList();
+        ArrayList<Integer> list = new ArrayList<>();
+        list.add(0);
+        list.add(2);
+        list.add(4);
+        list.add(6);
+        list.add(8);
+
+        //When
+        OddNumbersExterminator oddNumbersExterminator = new OddNumbersExterminator(normalList);
+
+        //Then
+        Assertions.assertEquals(list, oddNumbersExterminator.exterminator(normalList));
+    }
 }
