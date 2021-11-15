@@ -42,5 +42,5 @@ public class CollectionTestSuite
 
         System.out.println(OddNumbersExterminator.exterminate(evenAndOddNumbers));
     }
-    
+
 }
