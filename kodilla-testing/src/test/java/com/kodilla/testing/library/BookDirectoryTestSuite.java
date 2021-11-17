@@ -101,7 +101,7 @@ class BookDirectoryTestSuite
 
         assertEquals(0, theListOfBooks0.size());
         assertEquals(15, theListOfBooks15.size());
-        //assertEquals(40, theListOfBooks40.size());
+        assertEquals(40, theListOfBooks40.size());
     }
 
     @Test
@@ -127,9 +127,10 @@ class BookDirectoryTestSuite
 
         //When
         ArrayList<Book> booksOnLoan = new ArrayList<>();
+        int result = bookLibrary.listBooksInHandsOf(me).size();
 
         //Then
-        assertEquals(booksOnLoan.size(), bookLibrary.listBooksInHandsOf(me).size());
+        assertEquals(booksOnLoan.size(), result);
     }
 
     @Test
@@ -137,16 +138,17 @@ class BookDirectoryTestSuite
     {
         //Given
         BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);
-        ArrayList<Book> booksOnLoan = new ArrayList<>();
+        ArrayList<Book> testList = new ArrayList<>();
         Book book = new Book("Title", "Author", 1979);
-        ArrayList<Book> myBooks = bookLibrary.listBooksInHandsOf(me);
+        testList.add(book);
+        when(libraryDatabaseMock.listBooksInHandsOf(me)).thenReturn(testList);
 
         //When
-        booksOnLoan.add(book);
-        myBooks.add(book);
+        List<Book> result = bookLibrary.listBooksInHandsOf(me);
+
 
         //Then
-        assertEquals(booksOnLoan.size(), myBooks.size());
+        assertEquals(testList.size(), result.size());
     }
 
     @Test
@@ -155,7 +157,7 @@ class BookDirectoryTestSuite
         //Given
         BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);
         ArrayList<Book> booksOnLoan = new ArrayList<>();
-        ArrayList<Book> myBooks = bookLibrary.listBooksInHandsOf(me);
+        List<Book> myBooks = bookLibrary.listBooksInHandsOf(me);
 
         //When
         for (int i = 0; i < 5; i++)

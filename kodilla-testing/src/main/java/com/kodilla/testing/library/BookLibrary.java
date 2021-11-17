@@ -7,6 +7,8 @@ public class BookLibrary
 {
     LibraryDatabase libraryDatabase;
 
+    LibraryUser libraryUser;
+
     public BookLibrary(LibraryDatabase libraryDatabase)
     {
         this.libraryDatabase = libraryDatabase;
@@ -14,22 +16,22 @@ public class BookLibrary
 
     public List<Book> listBooksWithCondition(String titleFragment)
     {
-        List<Book> bookList = new ArrayList<>();
+        List<Book> emptyList = new ArrayList<>();
 
-        if (titleFragment.length() < 3) return bookList;
-            List<Book> resultList = libraryDatabase.listBooksWithCondition(titleFragment);
+        if (titleFragment.length() < 3)
+            return emptyList;
 
-        if (resultList.size() > 20) return bookList;
-            bookList = resultList;
+        List<Book> resultList = libraryDatabase.listBooksWithCondition(titleFragment);
 
-        return bookList;
+        //if (resultList.size() > 20)
+            //return emptyList;
+
+        return resultList;
     }
 
-    public ArrayList<Book> listBooksInHandsOf(LibraryUser libraryUser)
+    public List<Book> listBooksInHandsOf(LibraryUser libraryUser)
     {
-        ArrayList<Book> usersBooks = new ArrayList<>();
-
-        return usersBooks;
+        return libraryDatabase.listBooksInHandsOf(libraryUser);
     }
 
 }

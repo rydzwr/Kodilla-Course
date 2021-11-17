@@ -91,22 +91,23 @@ public class ShapeCollectorTestSuite
         Square square = new Square(10);
         Triangle triangle = new Triangle(10, 10);
         Circle circle = new Circle(10);
-
-        //When
         temporaryShapes.add(square);
         temporaryShapes.add(triangle);
         temporaryShapes.add(circle);
-        shapeCollector.addFigure(square);
-        shapeCollector.addFigure(triangle);
-        shapeCollector.addFigure(circle);
         String temporaryShapesString = "";
         for (Shape s : temporaryShapes)
         {
             temporaryShapesString += s + " ";
         }
 
+        //When
+        shapeCollector.addFigure(square);
+        shapeCollector.addFigure(triangle);
+        shapeCollector.addFigure(circle);
+        String result = shapeCollector.showFigures();
+
         //Then
-        Assertions.assertEquals(temporaryShapesString, shapeCollector.showFigures());
+        Assertions.assertEquals(temporaryShapesString, result);
     }
     
 }
