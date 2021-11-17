@@ -157,17 +157,17 @@ class BookDirectoryTestSuite
         //Given
         BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);
         ArrayList<Book> booksOnLoan = new ArrayList<>();
-        List<Book> myBooks = bookLibrary.listBooksInHandsOf(me);
-
-        //When
         for (int i = 0; i < 5; i++)
         {
             Book book1 = new Book("a", "b", i);
             booksOnLoan.add(book1);
-            myBooks.add(book1);
         }
+        when(libraryDatabaseMock.listBooksInHandsOf(me)).thenReturn(booksOnLoan);
+
+        //When
+        List<Book> result = bookLibrary.listBooksInHandsOf(me);
 
         //Then
-        assertEquals(booksOnLoan.size(), myBooks.size());
+        assertEquals(booksOnLoan.size(), result.size());
     }
 }
