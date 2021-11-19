@@ -128,4 +128,7 @@ public class ForumStatisticTestSuite
     }
 
 
+    // Jako, że jest to zadanie dodatkowe, postanowiłem je zrobić inaczej - lepiej.
+    // Napisałem tylko testy, które mają logiczny sens istnienia.
+
 }
