@@ -20,13 +20,17 @@ public class StatisticsCalculator
         double commentsQuantity = statistics.commentsCount();
 
         if (usersQuantity == 0)
+        {
             throw new IllegalArgumentException("Zero Users!");
-
+        }
         else if (postQuantity == 0)
+        {
             throw new IllegalArgumentException("Zero Posts!");
-
+        }
         else if (commentsQuantity == 0)
+        {
             throw new IllegalArgumentException("Zero Comments!");
+        }
 
 
         postsAveragePerUser = postQuantity / usersQuantity;
