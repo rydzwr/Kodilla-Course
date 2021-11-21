@@ -39,11 +39,11 @@ public final class ForumUser
         return userDateOfBirth;
     }
 
-    public int setUserYearOfBirth()
-    {
-        int userYearOfBirth = getUserDateOfBirth().getYear();
-        return userYearOfBirth;
-    }
+    //public int setUserYearOfBirth()
+    //{
+        //int userYearOfBirth = getUserDateOfBirth().getYear();
+        //return userYearOfBirth;
+    //}
 
     public int getUserPostsCount()
     {
