@@ -53,10 +53,6 @@ public class WorldTestSuite
         Country morocco = new Country("Morocco", countryPopulation);
         Country ghana = new Country("Ghana", countryPopulation);
 
-        world.addContinent(europe);
-        world.addContinent(asia);
-        world.addContinent(africa);
-
         europe.addToList(poland);
         europe.addToList(germany);
         europe.addToList(spain);
@@ -66,6 +62,10 @@ public class WorldTestSuite
         africa.addToList(egypt);
         africa.addToList(morocco);
         africa.addToList(ghana);
+
+        world.addContinent(europe);
+        world.addContinent(asia);
+        world.addContinent(africa);
 
         //When
         BigDecimal worldPeopleQuantity = world.getPeopleQuantity();

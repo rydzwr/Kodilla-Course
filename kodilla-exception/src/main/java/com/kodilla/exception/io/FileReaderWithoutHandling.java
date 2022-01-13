@@ -8,7 +8,7 @@ import java.util.stream.Stream;
 
 public class FileReaderWithoutHandling
 {
-    public void readFile() throws IOException
+    public void readFile() throws IOException, SecurityException
     {
         ClassLoader classLoader = getClass().getClassLoader();
         File file = new File(classLoader.getResource("names.txt").getFile());

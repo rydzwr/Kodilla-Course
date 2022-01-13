@@ -20,12 +20,14 @@ public class Continent {
         return list;
     }
 
+    /*
     public BigDecimal getPeopleQuantity() {
         BigDecimal peopleQuantity = list.stream()
                 .map(Country::getPeopleQuantity)
                 .reduce(BigDecimal.ZERO, (sum, current) -> sum = sum.add(current));
         return peopleQuantity;
     }
+     */
 
     @Override
     public String toString() {
