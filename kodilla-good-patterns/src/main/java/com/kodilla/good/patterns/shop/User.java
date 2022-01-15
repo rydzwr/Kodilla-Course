@@ -2,29 +2,29 @@ package com.kodilla.good.patterns.shop;
 
 public class User
 {
-    private int userID;
-    private String userName;
-    private String userEmail;
+    private String firstName;
+    private String lastName;
+    private String nickName;
 
-    public User(int userID, String userName, String email)
+    public User(String firstName, String lastName, String nickName)
     {
-        this.userID = userID;
-        this.userName = userName;
-        this.userEmail = userEmail;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.nickName = nickName;
     }
 
-    public int getUserID()
+    public String getFirstName()
     {
-        return userID;
+        return firstName;
     }
 
-    public String getUserName()
+    public String getLastName()
     {
-        return userName;
+        return lastName;
     }
 
-    public String getUserEmail()
+    public String getNickName()
     {
-        return userEmail;
+        return nickName;
     }
 }

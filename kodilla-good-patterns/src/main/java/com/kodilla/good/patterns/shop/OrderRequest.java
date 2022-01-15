@@ -1,32 +1,40 @@
 package com.kodilla.good.patterns.shop;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class OrderRequest
 {
     private User user;
+    private LocalDateTime orderDate;
     private Product product;
     private int quantity;
-    private double totalPrice;
-    private boolean paymentFailed;
-    LocalDate orderDate;
 
-
-    public OrderRequest(User user, Product product, int quantity, double totalPrice, LocalDate orderDate)
+    public OrderRequest(User user, LocalDateTime orderDate, Product product, int quantity)
     {
         this.user = user;
+        this.orderDate = orderDate;
         this.product = product;
         this.quantity = quantity;
-        this.totalPrice = totalPrice;
-        this.orderDate = orderDate;
     }
 
-    public void checkPayment(boolean paymentFailed)
+    public User getUser()
     {
-        if (paymentFailed == true)
-            System.out.println("Payment Failed!");
+        return user;
+    }
 
-        else
-            System.out.println("Transaction Successful!");
+    public LocalDateTime getOrderDate()
+    {
+        return orderDate;
+    }
+
+    public Product getProduct()
+    {
+        return product;
+    }
+
+    public int getQuantity()
+    {
+        return quantity;
     }
 }

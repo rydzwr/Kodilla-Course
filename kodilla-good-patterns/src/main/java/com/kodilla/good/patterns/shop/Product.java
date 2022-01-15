@@ -4,28 +4,22 @@ import java.util.Random;
 
 public class Product
 {
-    private int productID;
+    private String productName;
     private double price;
 
-    public Product(int productID, double price)
+    public Product(String productName, double price)
     {
-        this.productID = productID;
+        this.productName = productName;
         this.price = price;
     }
 
-    public int getProductID()
+    public String getProductName()
     {
-        return productID;
+        return productName;
     }
 
     public double getPrice()
     {
         return price;
-    }
-
-    public boolean checkPayment()
-    {
-        Random random = new Random();
-        return random.nextBoolean();
     }
 }

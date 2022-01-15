@@ -1,27 +1,17 @@
 package com.kodilla.good.patterns.shop;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class OrderRequestRetriever
 {
-    public void retrieve()
+    public OrderRequest retrieve()
     {
-        User user = new User(2137, "PauloSecundo", "paulo.secundo@wp.pl");
-        LocalDate orderDate = LocalDate.now();
-        Product product = new Product(1337, 20);
-        int quantity = 20;
+        User user = new User("John", "Paulo", "Secundo");
+        LocalDateTime dateOfOrder = LocalDateTime.of(2005, 04, 02, 21, 37);
+        Product product = new Product("Fondant", 4.0);
+        int quantity = 8;
 
-        double totalPrice = quantity * product.getPrice();
-
-        OrderRequest orderRequest = new OrderRequest(user, product, quantity, totalPrice, orderDate);
-
-        if (product.checkPayment())
-        {
-            orderRequest.checkPayment(false);
-        }
-
-        else
-            orderRequest.checkPayment(true);
+        return new OrderRequest(user, dateOfOrder, product, quantity);
     }
-
 }

@@ -2,10 +2,29 @@ package com.kodilla.good.patterns.shop;
 
 public class OrderProcessor
 {
-    private OrderRequestRetriever orderRequestRetriever = new OrderRequestRetriever();
+    private InformationService informationService;
+    private OrderService orderService;
+    private OrderRepository orderRepository;
 
-    public void processOrder()
+    public OrderProcessor(final InformationService informationService, final OrderService orderService, final OrderRepository orderRepository)
     {
-        orderRequestRetriever.retrieve();
+        this.informationService = informationService;
+        this.orderService = orderService;
+        this.orderRepository = orderRepository;
+    }
+
+    public OrderDto process(final OrderRequest orderRequest)
+    {
+        boolean isOrdered = orderService.order(orderRequest.getUser(), orderRequest.getOrderDate(),
+                orderRequest.getProduct(), orderRequest.getQuantity());
+
+        if (isOrdered)
+        {
+            informationService.inform(orderRequest.getUser());
+            orderRepository.createOrder(orderRequest.getUser(), orderRequest.getOrderDate());
+            return new OrderDto(orderRequest.getUser(), true);
+        }
+        else
+            return new OrderDto(orderRequest.getUser(), false);
     }
 }

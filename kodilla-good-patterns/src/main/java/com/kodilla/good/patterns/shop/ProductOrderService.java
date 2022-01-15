@@ -4,8 +4,10 @@ public class ProductOrderService
 {
     public static void main(String[] args)
     {
-        OrderProcessor orderProcessor = new OrderProcessor();
+        OrderRequestRetriever orderRequestRetriever = new OrderRequestRetriever();
+        OrderRequest orderRequest = orderRequestRetriever.retrieve();
 
-        orderProcessor.processOrder();
+        OrderProcessor orderProcessor = new OrderProcessor(new EmailService(), new CakesOrderService(), new CakesOrderRepository());
+        orderProcessor.process(orderRequest);
     }
 }
