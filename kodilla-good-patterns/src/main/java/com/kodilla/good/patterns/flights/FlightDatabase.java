@@ -3,23 +3,20 @@ package com.kodilla.good.patterns.flights;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class FlightDatabase
-{
+public class FlightDatabase {
     private ArrayList<Flight> flightsList = new ArrayList<>();
     ArrayList<String> cities;
 
-    public ArrayList<Flight> getFlightsList()
-    {
+    public ArrayList<Flight> getFlightsList() {
         createFlights();
 
         return flightsList;
     }
 
-    public ArrayList createFlights()
-    {
+    public ArrayList<Flight> createFlights() {
         Random random = new Random();
 
-        ArrayList<String> cities = new ArrayList<>();
+        cities = new ArrayList<>();
         cities.add("Warszawa");
         cities.add("Krakow");
         cities.add("Wroclaw");
@@ -28,8 +25,7 @@ public class FlightDatabase
 
         int randomFlightsCount = random.nextInt(60) + 30;
 
-        for (int i = 0; i < randomFlightsCount; i++)
-        {
+        for (int i = 0; i < randomFlightsCount; i++) {
             ArrayList<String> citiesCopy = (ArrayList<String>) cities.clone();
 
             int generateFirst = random.nextInt(citiesCopy.size());

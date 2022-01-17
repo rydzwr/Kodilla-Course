@@ -5,21 +5,18 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class FlightSearcher
-{
+public class FlightSearcher {
     FlightDatabase flightDatabase = new FlightDatabase();
 
     ArrayList<Flight> flightsList = flightDatabase.getFlightsList();
 
-    public void searchByDepartureAirport(String departureCity)
-    {
+    public void searchByDepartureAirport(String departureCity) {
         List<String> byDepartureList = flightsList.stream()
                 .filter(flight -> flight.getDepartureAirport().equals(departureCity))
                 .map(flight -> flight.toString())
                 .collect(Collectors.toList());
 
-        if (!byDepartureList.isEmpty())
-        {
+        if (!byDepartureList.isEmpty()) {
             System.out.println("List of flights from " + departureCity + ":");
             byDepartureList.stream()
                     .forEach(System.out::println);
@@ -30,15 +27,13 @@ public class FlightSearcher
             System.out.println("Departure airport not found. Please try again.");
     }
 
-    public void searchByArrivalAirport(String arrivalCity)
-    {
+    public void searchByArrivalAirport(String arrivalCity) {
         List<String> byArrivalList = flightsList.stream()
                 .filter(flight -> flight.getArrivalAirport().equals(arrivalCity))
                 .map(flight -> flight.toString())
                 .collect(Collectors.toList());
 
-        if (!byArrivalList.isEmpty())
-        {
+        if (!byArrivalList.isEmpty()) {
             System.out.println("List of flights to " + arrivalCity + ":");
             byArrivalList.stream()
                     .forEach(System.out::println);
@@ -49,8 +44,7 @@ public class FlightSearcher
             System.out.println("Arrival airport not found. Please try again.");
     }
 
-    public void searchWithStopover(String departureCity, String arrivalCity, String transferCity)
-    {
+    public void searchWithStopover(String departureCity, String arrivalCity, String transferCity) {
         List<String> beforeStopover = flightsList.stream()
                 .filter(flight -> flight.getDepartureAirport().equals(departureCity) && flight.getArrivalAirport().equals(transferCity))
                 .map(flight -> flight.toString())
@@ -64,8 +58,7 @@ public class FlightSearcher
         HashMap<List, List> withStopover = new HashMap<>();
         withStopover.put(beforeStopover, afterStopover);
 
-        if (!withStopover.get(beforeStopover).isEmpty() && !withStopover.values().isEmpty())
-        {
+        if (!withStopover.get(beforeStopover).isEmpty() && !withStopover.values().isEmpty()) {
             System.out.println("List of flights from " + departureCity + " to " + arrivalCity + " with stopover in " + transferCity + ":");
             System.out.println();
 
