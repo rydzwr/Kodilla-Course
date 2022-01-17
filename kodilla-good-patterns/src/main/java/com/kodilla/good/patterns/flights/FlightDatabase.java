@@ -1,52 +1,47 @@
 package com.kodilla.good.patterns.flights;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class FlightDatabase
 {
-    private FlightsCreator flightsCreator;
+    private ArrayList<Flight> flightsList = new ArrayList<>();
+    ArrayList<String> cities;
 
-    public void createFlights()
+    public ArrayList<Flight> getFlightsList()
     {
-        flightsCreator = new FlightsCreator();
+        createFlights();
 
-        String city1 = "Warszawa";
-        String city2 = "Krakow";
-        String city3 = "Wroclaw";
-        String city4 = "Gdansk";
-        String city5 = "Bydgoszcz";
+        return flightsList;
+    }
 
-        flightsCreator.addFlight(new Flight(city1, city2));
-        flightsCreator.addFlight(new Flight(city1, city3));
-        flightsCreator.addFlight(new Flight(city1, city4));
-        flightsCreator.addFlight(new Flight(city1, city5));
-        flightsCreator.addFlight(new Flight(city2, city1));
-        flightsCreator.addFlight(new Flight(city3, city1));
-        flightsCreator.addFlight(new Flight(city4, city1));
-        flightsCreator.addFlight(new Flight(city5, city1));
-        flightsCreator.addFlight(new Flight(city3, city2));
-        flightsCreator.addFlight(new Flight(city4, city2));
-        flightsCreator.addFlight(new Flight(city5, city2));
-        flightsCreator.addFlight(new Flight(city4, city1));
-        flightsCreator.addFlight(new Flight(city5, city1));
-        flightsCreator.addFlight(new Flight(city3, city2));
-        flightsCreator.addFlight(new Flight(city4, city2));
-        flightsCreator.addFlight(new Flight(city5, city2));
-        flightsCreator.addFlight(new Flight(city1, city2));
-        flightsCreator.addFlight(new Flight(city1, city3));
-        flightsCreator.addFlight(new Flight(city1, city4));
-        flightsCreator.addFlight(new Flight(city1, city5));
-        flightsCreator.addFlight(new Flight(city2, city1));
-        flightsCreator.addFlight(new Flight(city3, city1));
-        flightsCreator.addFlight(new Flight(city4, city1));
-        flightsCreator.addFlight(new Flight(city5, city1));
-        flightsCreator.addFlight(new Flight(city3, city2));
-        flightsCreator.addFlight(new Flight(city4, city2));
-        flightsCreator.addFlight(new Flight(city5, city2));
-        flightsCreator.addFlight(new Flight(city4, city1));
-        flightsCreator.addFlight(new Flight(city5, city1));
-        flightsCreator.addFlight(new Flight(city3, city2));
-        flightsCreator.addFlight(new Flight(city4, city2));
-        flightsCreator.addFlight(new Flight(city5, city2));
+    public ArrayList createFlights()
+    {
+        Random random = new Random();
+
+        ArrayList<String> cities = new ArrayList<>();
+        cities.add("Warszawa");
+        cities.add("Krakow");
+        cities.add("Wroclaw");
+        cities.add("Gdansk");
+        cities.add("Bydgoszcz");
+
+        int randomFlightsCount = random.nextInt(60) + 30;
+
+        for (int i = 0; i < randomFlightsCount; i++)
+        {
+            ArrayList<String> citiesCopy = (ArrayList<String>) cities.clone();
+
+            int generateFirst = random.nextInt(citiesCopy.size());
+            String firstCiy = citiesCopy.get(generateFirst);
+            citiesCopy.remove(generateFirst);
+
+            int generateSecond = random.nextInt(citiesCopy.size());
+            String secondCity = citiesCopy.get(generateSecond);
+
+            flightsList.add(new Flight(firstCiy, secondCity));
+        }
+
+        return flightsList;
     }
 }
