@@ -1,23 +1,19 @@
 package com.kodilla.good.patterns.food2Door;
 
-public class Product
-{
+public class Product {
     String productName;
     double productPrice;
 
-    public Product(String productName, double productPrice)
-    {
+    public Product(String productName, double productPrice) {
         this.productName = productName;
         this.productPrice = productPrice;
     }
 
-    public String getProductName()
-    {
+    public String getProductName() {
         return productName;
     }
 
-    public double getProductPrice()
-    {
+    public double getProductPrice() {
         return productPrice;
     }
 }
