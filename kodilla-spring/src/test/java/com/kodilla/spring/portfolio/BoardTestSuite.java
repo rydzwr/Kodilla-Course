@@ -12,11 +12,9 @@ import org.springframework.util.Assert;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class BoardTestSuite
-{
+public class BoardTestSuite {
     @Test
-    public void testTaskAdd()
-    {
+    public void testTaskAdd() {
         //Given
         ApplicationContext context = new AnnotationConfigApplicationContext(BoardConfig.class);
         Board board = context.getBean(Board.class);

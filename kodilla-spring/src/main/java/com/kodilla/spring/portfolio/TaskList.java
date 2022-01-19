@@ -3,17 +3,14 @@ package com.kodilla.spring.portfolio;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TaskList
-{
+public class TaskList {
     ArrayList<String> tasks;
 
-    public TaskList()
-    {
+    public TaskList() {
         this.tasks = new ArrayList<>();
     }
 
-    public ArrayList<String> getTasks()
-    {
+    public ArrayList<String> getTasks() {
         return tasks;
     }
 }

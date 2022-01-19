@@ -9,11 +9,9 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
-public class ForumUserTestSuite
-{
+public class ForumUserTestSuite {
     @Test
-    void getUserName()
-    {
+    void getUserName() {
         //Given
         ApplicationContext context = new AnnotationConfigApplicationContext("com.kodilla.spring.forum");
         ForumUser forumUser = context.getBean(ForumUser.class);

@@ -9,11 +9,9 @@ import org.springframework.test.context.junit4.SpringRunner;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
-public class CalculatorTestSuite
-{
+public class CalculatorTestSuite {
     @Test
-    public void testCalculations()
-    {
+    public void testCalculations() {
         //Given
         ApplicationContext context = new AnnotationConfigApplicationContext("com.kodilla.spring.calculator");
         Calculator calculator = context.getBean(Calculator.class);
