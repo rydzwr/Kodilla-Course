@@ -28,14 +28,15 @@ public class LibraryTestSuite {
         Library deepClone = library.deepCopy();
         deepClone.setName("Deep Library");
 
+        deepClone.getBooks().add(new Book("DeepBook", "DeepAuthor", LocalDate.of(2020, 1, 1)));
+
         //Then
 
         System.out.println(library);
         System.out.println(shallowClone);
         System.out.println(deepClone);
 
-        Assertions.assertEquals(10, library.getBooks().size());
-        Assertions.assertEquals(10, shallowClone.getBooks().size());
-        Assertions.assertEquals(10, deepClone.getBooks().size());
+        Assertions.assertEquals(library.getBooks(), shallowClone.getBooks());
+        Assertions.assertEquals(library.getBooks().size() + 1, deepClone.getBooks().size());
     }
 }
