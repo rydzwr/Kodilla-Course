@@ -3,11 +3,9 @@ package com.kodilla.patterns.builder.bigmac;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class BigmacTestSuite
-{
+public class BigmacTestSuite {
     @Test
-    public void testNewBigmac()
-    {
+    public void testNewBigmac() {
         // Given
 
         Bigmac bigmac = new Bigmac.BigmacBulider()
