@@ -1,0 +1,75 @@
+SELECT i.ID, l.NAME AS ListName, i.DESCRIPTION, i.SUMMARY
+FROM issue i
+         JOIN issueslists l on l.ID = i.ISSUESLIST_ID;
+
+SELECT i.ID, concat(u.FIRSTNAME, ' ', u.LASTNAME) AS USER, i.DESCRIPTION, i.SUMMARY
+FROM issue i
+         JOIN users u on i.user_id_assignedto = u.ID
+ORDER BY i.ID;
+
+SELECT concat(u.FIRSTNAME, ' ', u.LASTNAME) AS USER, count(i.user_id_assignedto) AS 'number of tasks'
+FROM issue i
+         JOIN users u on i.user_id_assignedto = u.ID
+GROUP BY i.user_id_assignedto
+ORDER BY USER;
+
+select * from issueslists;
+select * from issue;
+
+SELECT l.ID, l.NAME, i.DESCRIPTION, i.SUMMARY
+FROM issueslists l
+         JOIN issue i on l.ID = i.ISSUESLIST_ID;
+
+create table ISSUESLISTS
+(
+    ID SERIAL,
+    NAME VARCHAR(50) CHARSET utf8 NOT NULL
+);
+
+commit;
+
+create table ISSUE
+(
+    ID SERIAL PRIMARY KEY,
+    ISSUESLIST_ID BIGINT UNSIGNED NOT NULL,
+    SUMMARY VARCHAR(1024) NOT NULL,
+    DESCRIPTION VARCHAR(1024) NOT NULL,
+    foreign key (ISSUESLIST_ID) references ISSUESLISTS(ID)
+);
+
+commit;
+
+select * FROM ISSUESLISTS;
+select * FROM ISSUE;
+
+INSERT INTO ISSUESLISTS (NAME) VALUE ('ToDo');
+INSERT INTO ISSUESLISTS (NAME) VALUE ('InProgress');
+INSERT INTO ISSUESLISTS (NAME) VALUE ('Done');
+
+commit;
+
+select * FROM ISSUESLISTS;
+
+INSERT INTO ISSUE (ISSUESLIST_ID, SUMMARY, DESCRIPTION) VALUE (1, 'summary1', 'description1');
+INSERT INTO ISSUE (ISSUESLIST_ID, SUMMARY, DESCRIPTION) VALUE (1, 'summary2', 'description2');
+INSERT INTO ISSUE (ISSUESLIST_ID, SUMMARY, DESCRIPTION) VALUE (1, 'summary3', 'description3');
+INSERT INTO ISSUE (ISSUESLIST_ID, SUMMARY, DESCRIPTION) VALUE (1, 'summary4', 'description4');
+INSERT INTO ISSUE (ISSUESLIST_ID, SUMMARY, DESCRIPTION) VALUE (1, 'summary5', 'description5');
+
+INSERT INTO ISSUE (ISSUESLIST_ID, SUMMARY, DESCRIPTION) VALUE (2, 'summary1', 'description1');
+INSERT INTO ISSUE (ISSUESLIST_ID, SUMMARY, DESCRIPTION) VALUE (2, 'summary2', 'description2');
+INSERT INTO ISSUE (ISSUESLIST_ID, SUMMARY, DESCRIPTION) VALUE (2, 'summary3', 'description3');
+INSERT INTO ISSUE (ISSUESLIST_ID, SUMMARY, DESCRIPTION) VALUE (2, 'summary4', 'description4');
+INSERT INTO ISSUE (ISSUESLIST_ID, SUMMARY, DESCRIPTION) VALUE (2, 'summary5', 'description5');
+
+INSERT INTO ISSUE (ISSUESLIST_ID, SUMMARY, DESCRIPTION) VALUE (3, 'summary1', 'description1');
+INSERT INTO ISSUE (ISSUESLIST_ID, SUMMARY, DESCRIPTION) VALUE (3, 'summary2', 'description2');
+INSERT INTO ISSUE (ISSUESLIST_ID, SUMMARY, DESCRIPTION) VALUE (3, 'summary3', 'description3');
+INSERT INTO ISSUE (ISSUESLIST_ID, SUMMARY, DESCRIPTION) VALUE (3, 'summary4', 'description4');
+INSERT INTO ISSUE (ISSUESLIST_ID, SUMMARY, DESCRIPTION) VALUE (3, 'summary5', 'description5');
+
+commit;
+
+select * from ISSUE;
+
+
