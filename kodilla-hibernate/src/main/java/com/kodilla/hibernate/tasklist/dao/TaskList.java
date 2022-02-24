@@ -14,18 +14,26 @@ public class TaskList
     private int id;
     private String listName;
     private String description;
-    private List<Task> tasks;
+    private List<Task> tasks = new ArrayList<>();
 
-    public TaskList(String listName, String description)
-    {
+    public TaskList(String listName, String description) {
         this.listName = listName;
         this.description = description;
-        this.tasks = new ArrayList<>();
     }
 
     public TaskList()
     {
 
+    }
+
+    @OneToMany(
+            targetEntity = Task.class,
+            mappedBy = "taskList",
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY
+    )
+    public List<Task> getTasks() {
+        return tasks;
     }
 
     @Id
