@@ -3,9 +3,11 @@ package com.kodilla.patterns.singleton;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class LoggerTestSuite {
+public class LoggerTestSuite
+{
     @Test
-    public void testGetLastLog() {
+    public void testGetLastLog()
+    {
 
         //Given
         Logger.getInstance().log("LOG");
