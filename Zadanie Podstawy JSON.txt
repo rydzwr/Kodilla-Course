@@ -3,24 +3,26 @@
         {
             "name": "740",
             "brand" : "Volvo",
-            "seats" : {
-                "seat1" : {
-                    "material" : "leather",
-                    "color" : "black"
-                },
-                "seat2" : {
-                     "material" : "leather",
-                    "color" : "black"
-                },
-                "seat3" : {
-                     "material" : "leather",
-                    "color" : "black"
-                },
-                "seat4" : {
-                     "material" : "leather",
-                    "color" : "black"
+            "seats" : [
+                {
+                    "seat1" : {
+                         "material" : "leather",
+                        "color" : "black"
+                     },
+                    "seat2" : {
+                         "material" : "leather",
+                         "color" : "black"
+                     },
+                    "seat3" : {
+                          "material" : "leather",
+                         "color" : "black"
+                     },
+                     "seat4" : {
+                          "material" : "leather",
+                         "color" : "black"
+                     }
                 }
-            },
+            ]
             "engine_size" : "2300"
         }
     ]
